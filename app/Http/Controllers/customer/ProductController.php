@@ -40,7 +40,7 @@ class ProductController extends Controller
         $products->appends(['sort_by'=> $sortBy]);
   
 
-        return view("customer.shop", ['products'=>$products,'categories'=>$categories,'tags'=>$tags]);
+        return view("customer.product.index", ['products'=>$products,'categories'=>$categories,'tags'=>$tags]);
     }
 
     /**
@@ -80,7 +80,7 @@ class ProductController extends Controller
             $avgRating = $sumRating / $countRating;
         }
         $product->avgRating = $avgRating;
-        return view("customer.product", compact("product"));
+        return view("customer.product.show", compact("product"));
     }
 
     /**
@@ -112,7 +112,7 @@ class ProductController extends Controller
         $tags = Product::pluck('tag')->unique();
         $categories = Category::all();
         $products = Product::where('category_id',Category::where('name',$categoryName)->first()->id)->paginate(9);
-        return view("customer.shop", ['products'=>$products,'categories'=>$categories,'tags'=>$tags]);
+        return view("customer.product.index", ['products'=>$products,'categories'=>$categories,'tags'=>$tags]);
     }
 
     public function tag($tagName,Request $request){
@@ -120,6 +120,6 @@ class ProductController extends Controller
         $products = Product::where('tag',$tagName)->paginate(9);
         $tags = Product::pluck('tag')->unique();
 
-        return view("customer.shop", ['products'=>$products,'categories'=>$categories,'tags'=>$tags]);
+        return view("customer.product.index", ['products'=>$products,'categories'=>$categories,'tags'=>$tags]);
     }
 }

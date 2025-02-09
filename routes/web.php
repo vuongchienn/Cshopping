@@ -7,7 +7,7 @@ use App\Http\Controllers\customer\HomeController as HomeController;
 use App\Http\Controllers\customer\CartController as CartController;
 use App\Http\Controllers\customer\CheckoutController as CheckoutController;
 use App\Http\Controllers\customer\OrderController as OrderController;
-use App\Http\Controllers\customer\AuthController as CustomerAuthController;
+use App\Http\Controllers\auth\AuthController as AuthController;
 use App\Http\Controllers\customer\CommentController as CommentController;
 use App\Http\Controllers\customer\ImageController as ImageController;
 use App\Http\Controllers\admin\CategoryController as CategoryController;
@@ -71,13 +71,13 @@ Route::prefix('customer')->group(function () {
     Route::get('tag/{tagName}',[CustomerProductController::class,'tag']);
 });
 
-Route::get('login',[CustomerAuthController::class,'login'])->name('login');
-Route::post('checkLogin',[CustomerAuthController::class,'checkLogin'])->name('checkLogin');
-Route::get('logout',[CustomerAuthController::class,'logout'])->name('logout');
+Route::get('login',[AuthController::class,'login'])->name('login');
+Route::post('checkLogin',[AuthController::class,'checkLogin'])->name('checkLogin');
+Route::get('logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/checkout/vnPayCheck',[CheckoutController::class,'vnPayCheck']);
-Route::get('register',[CustomerAuthController::class,'registerView'])->name('registerView');
-Route::post('register',[CustomerAuthController::class,'register'])->name('register');
+Route::get('register',[AuthController::class,'registerView'])->name('registerView');
+Route::post('register',[AuthController::class,'register'])->name('register');
 
 
 

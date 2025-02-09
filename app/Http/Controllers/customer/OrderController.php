@@ -20,7 +20,7 @@ class OrderController extends Controller
       
 
         
-        return view("customer.my-order", compact("orders"));
+        return view("customer.order.index", compact("orders"));
     }
 
     /**
@@ -115,7 +115,7 @@ class OrderController extends Controller
         }
 
         
-        return view('customer.checkout-result')->with("success","okee");
+        return view('customer.check-out.checkout-result')->with("success","okee");
 
     }
 
@@ -125,7 +125,7 @@ class OrderController extends Controller
     public function show(string $id)
     {
         $order = Order::find($id);
-        return view("customer.my-order-detail")->with("order", $order);
+        return view("customer.order.show")->with("order", $order);
     }
 
     /**

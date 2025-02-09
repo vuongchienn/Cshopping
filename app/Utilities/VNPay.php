@@ -37,7 +37,7 @@ class VNPay
         $vnp_TxnRef = $data['vnp_TxnRef']; // Mã đơn hàng
         $vnp_OrderInfo = $data['vnp_OrderInfo']; // Mô tả đơn hàng
         $vnp_OrderType = 100000; // Loại hàng hóa: Thực Phẩm - Tiêu Dùng
-        $vnp_Amount = $data['vnp_Amount'] ; // Số tiền (vnd) * 100
+        $vnp_Amount = $data['vnp_Amount']*100 ; // Số tiền (vnd) * 100
         $vnp_Locale = 'vn'; // Ngôn ngữ tiếng việt
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; // Địa chỉ IP của người thanh toán
 

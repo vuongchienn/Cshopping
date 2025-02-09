@@ -15,7 +15,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $productInCarts= User::find(Auth::user()->id)->cartProducts;
-        return view("customer.check-out",["productInCarts"=>$productInCarts]);
+        return view("customer.check-out.index",["productInCarts"=>$productInCarts]);
     }
 
     /**
@@ -75,10 +75,10 @@ class CheckoutController extends Controller
 
         if($vnp_ResponseCode !=null){
             if($vnp_ResponseCode ==00){
-                return view('customer.checkout-result')->with("success","okee");
+                return view('customer.check-out.checkout-result')->with("success","okee");
             }
             else{
-                return view('customer.checkout-result')->with("success","fail");
+                return view('customer.check-out.checkout-result')->with("success","fail");
             }
         }
         

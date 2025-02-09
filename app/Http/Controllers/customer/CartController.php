@@ -19,7 +19,7 @@ class CartController extends Controller
     {
         $productInCarts= User::find(Auth::user()->id)->cartProducts;
         View::share('productInCarts', $productInCarts);
-        return view("customer.shopping-cart",["productInCarts"=>$productInCarts]);
+        return view("customer.cart.index",["productInCarts"=>$productInCarts]);
     }
 
     /**
